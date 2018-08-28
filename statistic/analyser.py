@@ -21,7 +21,7 @@ class Analyser(object):
         '''
         Load data from log file
         '''
-        log_file = open(self.__filepath,'r')
+        log_file = open(self.__filepath, 'r')
         data = log_file.readlines()
         log_file.close()
         for line in data:
@@ -119,18 +119,13 @@ class Analyser(object):
         unique_countries_count = len(list(set(countries)))
         
         return (unique_visitors_count, unique_url_count, unique_countries_count,)
-    
-        ''' 
-        TODO: Написати функцію, яка повертає унікальний список країн з який було відвідано ресурс.
-        Адреса ресурсу передається параметром.
-        Назва функції - resource_countries.
-        '''
+
     def resource_countries(self, home_page):
-        unic_countries_list = []
+
+        unique_countries_list = []
 
         for row in self.__data:
             if row[1] == home_page:
-                if row[2] not in unic_countries_list:
-                    unic_countries_list.append(row[2])
-        return unic_countries_list
-
+                if row[2] not in unique_countries_list:
+                    unique_countries_list.append(row[2])
+        return unique_countries_list
