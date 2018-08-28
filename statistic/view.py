@@ -32,6 +32,8 @@ class CLIView(object):
         result += "\n\n"
         result += "Home page visits: "
         result += str(self.__analyser.homepage_visits_count('http://mysite.org/'))
+        result += "\n\nVisitors - %d, Resources - %d, Countries - %d" % self.__analyser.unique_items_count()
+        result += "\n\nMain page visitors countries - "+", ".join(self.__analyser.resource_countries('http://mysite.org/'))
         return result
         
     def get_unique_visitors(self):

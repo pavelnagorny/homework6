@@ -46,7 +46,6 @@ class Analyser(object):
         Return array of unique visitors (ip)
         '''
         visitors = []
-
         for record in self.__data:
             visitors.append(record[0])
         visitors = list(set(visitors))
@@ -57,7 +56,6 @@ class Analyser(object):
         Return array of visitors and count of visits
         '''
         visitors = []
-
         for record in self.__data:
             visitors.append(record[0])
         visitors.sort()        
@@ -94,7 +92,37 @@ class Analyser(object):
         '''
         visits_count = 0
         for record in self.__data:
-            pass
-        # TODO: Обчислити кількість відвідувань головної сторінки
+            if record[1] == home_page:
+                visits_count += 1
         
         return visits_count
+    
+    def unique_items_count(self):
+        '''
+        Return tuple (unique_visitors_count, unique_url_count, unique_countries_count)
+        '''
+        unique_visitors_count = 0
+        unique_url_count = 0
+        unique_countries_count = 0
+        
+        visitors = []
+        urls = []
+        countries = []
+        
+        for record in self.__data:
+            visitors.append(record[0])
+            urls.append(record[1])
+            countries.append(record[2])
+        
+        unique_visitors_count = len(list(set(visitors)))
+        unique_url_count = len(list(set(urls)))
+        unique_countries_count = len(list(set(countries)))
+        
+        return (unique_visitors_count, unique_url_count, unique_countries_count,)
+    
+        ''' 
+        TODO: Написати функцію, яка повертає унікальний список країн з який було відвідано ресурс.
+        Адреса ресурсу передається параметром.
+        Назва функції - resource_countries.
+        '''
+    
