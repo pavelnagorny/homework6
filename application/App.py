@@ -18,15 +18,14 @@ class App(object):
         Constructor
         '''
         dirname = os.path.dirname(__file__)
-        self.__logfile = os.path.join(dirname,'../data/site.log')
+        self.__logfile = os.path.join(dirname, '../data/site.log')
     
     def run(self):
         '''
         Run application
         '''
-        print self.show_statistic() 
-        
-    
+        print(self.show_statistic())
+
     def show_statistic(self):
         '''
         Show statistic
@@ -35,5 +34,3 @@ class App(object):
         analyser.load_file()
         view = CLIView(analyser)
         return view.render()
-        
-    

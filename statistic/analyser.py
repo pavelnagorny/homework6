@@ -67,7 +67,7 @@ class Analyser(object):
         '''
         visitors = dict()
         for record in self.__data:
-            if visitors.has_key(record[0]):
+            if record[0] in visitors.keys():
                 visitors[record[0]] += 1
             else:
                 visitors[record[0]] = 1
@@ -80,8 +80,8 @@ class Analyser(object):
         '''
         resources = {}
         for record in self.__data:
-            if resources.has_key(record[2]):
-                resources[record[2]]+=1
+            if record[2] in resources.keys():
+                resources[record[2]] += 1
             else:
                 resources[record[2]] = 1
         return resources
@@ -125,4 +125,12 @@ class Analyser(object):
         Адреса ресурсу передається параметром.
         Назва функції - resource_countries.
         '''
-    
+    def resource_countries(self, home_page):
+        unic_countries_list = []
+
+        for row in self.__data:
+            if row[1] == home_page:
+                if row[2] not in unic_countries_list:
+                    unic_countries_list.append(row[2])
+        return unic_countries_list
+
